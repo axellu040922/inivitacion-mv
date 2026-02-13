@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Tengo una pregunta para ti... 💌" />
+    <meta property="og:description" content="Ábrelo, es algo especial que programé para ti." />
+    <meta property="og:image" content="https://tu-usuario.github.io/tu-repo/foto1.jpeg" />
+    
     <title>Para ti ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -38,6 +42,7 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             position: relative;
+            margin: 20px 0; /* Margen para que no se pegue en móviles al scrollear */
         }
 
         h1, h2 {
@@ -98,25 +103,38 @@
             transform: scale(1.05);
         }
 
-        /* --- ESTILOS DE LA BROMA Y TIMELINE --- */
-        .messi-img, .couple-photo {
+        /* --- ESTILOS DE FOTOS --- */
+        .messi-img {
             width: 100%;
             border-radius: 15px;
             margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .couple-photo {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .timeline-item {
-            margin-bottom: 30px;
-            padding: 10px;
+            margin-bottom: 40px;
+            padding: 15px;
             background: #fff5f7;
             border-radius: 15px;
+            border: 1px solid #ffe0e6;
+        }
+
+        .timeline-item p {
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-bottom: 5px;
         }
 
         /* --- ESTILOS DE LA CARTA --- */
         .envelope-container {
             cursor: pointer;
-            margin: 30px 0;
+            margin: 50px 0 20px 0;
         }
         
         .envelope {
@@ -147,14 +165,14 @@
             gap: 15px;
             margin-top: 20px;
             position: relative;
-            height: 60px; /* Espacio para que el botón se mueva */
+            height: 60px;
         }
 
         #btnNo {
             background-color: #555;
-            position: absolute; /* Crucial para moverlo */
+            position: absolute;
             width: auto;
-            right: 20px; /* Posición inicial */
+            right: 20px;
         }
 
         #btnYes {
@@ -181,7 +199,7 @@
             
             <label>Usuario:</label>
             <input type="text" id="username" placeholder="TuNombreDDMMAA">
-            <span class="hint">Pista: Tu nombre + Fecha 1ra vez que nos vimos (Ej: Nombre010121)</span>
+            <span class="hint">Pista: Tu nombre + Fecha 1ra vez que nos vimos (Ej: Evelin180923)</span>
 
             <label>Contraseña:</label>
             <input type="text" id="password" placeholder="dd/mm/aa+aaaa+dd/mm/aaaa">
@@ -202,15 +220,44 @@
             <h2>Nuestra Historia ✨</h2>
             
             <div class="timeline-item">
-                <p><strong>Cuando todo empezó...</strong></p>
+                <p>Llevamos mucho tiempo juntos ❤️</p>
                 <img src="foto1.jpeg" class="couple-photo">
             </div>
 
             <div class="timeline-item">
-                <p><strong>Momentos inolvidables...</strong></p>
+                <p>Hemos pasado de todo juntos...</p>
                 <img src="foto2.jpeg" class="couple-photo">
+                <img src="foto3.jpeg" class="couple-photo">
+            </div>
+
+            <div class="timeline-item">
+                <p>Momentos tristes 🌧️</p>
+                <img src="foto4.jpeg" class="couple-photo">
+                <img src="foto5.jpeg" class="couple-photo">
+            </div>
+
+            <div class="timeline-item">
+                <p>Pero mucho más momentos divertidos 😂</p>
+                <img src="foto6.jpeg" class="couple-photo">
+                <img src="foto7.jpeg" class="couple-photo">
+            </div>
+
+            <div class="timeline-item">
+                <p>He vivido muchas cosas contigo...</p>
+                <img src="foto8.jpeg" class="couple-photo">
+            </div>
+
+            <div class="timeline-item">
+                <p>Y quiero seguir viviendo muchas más 🚀</p>
+                <img src="foto9.jpeg" class="couple-photo">
+                <img src="foto10.jpeg" class="couple-photo">
             </div>
             
+            <div class="timeline-item">
+                <p>Por lo que te quiero preguntar... 👇</p>
+                <img src="foto11.jpeg" class="couple-photo">
+            </div>
+
             <div class="envelope-container" onclick="openLetter()">
                 <div class="envelope">💌</div>
                 <p><small>(Toca el sobre para abrir)</small></p>
@@ -220,7 +267,7 @@
         <div id="step4" class="step">
             <div class="paper">
                 <h2>La Pregunta Importante</h2>
-                <p>Este 14 de febrero de 2025...</p>
+                <p>Este 14 de febrero de 2026...</p>
                 <h3>¿Quieres ser mi Valentín? 🌹</h3>
                 
                 <div class="btn-group">
@@ -233,27 +280,26 @@
         <div id="step5" class="step">
             <h1>¡Sabía que dirías que sí! ❤️</h1>
             <p>Gracias por aceptar, te amo con todo mi corazón.</p>
-            <img src="foto3.jpeg" class="couple-photo">
+            <img src="foto11.jpeg" class="couple-photo">
             <h1>🥰</h1>
         </div>
     </div>
 
     <script>
-        // --- LOGICA DE NAVEGACION Y VALIDACION ---
+        // --- LÓGICA DE NAVEGACIÓN Y VALIDACIÓN ---
 
         function checkLogin() {
             const user = document.getElementById('username').value.trim();
             const pass = document.getElementById('password').value.trim();
             const error = document.getElementById('errorMsg');
 
-            // Validacion estricta segun tus instrucciones
-            // NOTA: Asegurate de escribirlo exactamente igual, las mayusculas importan en JS
+            // Validacion de credenciales
             if (user === "Evelin180923" && pass === "24/06/87+2004+18/12/2022") {
                 error.style.display = 'none';
                 nextStep('step1', 'step2');
             } else {
                 error.style.display = 'block';
-                // Animacion de vibracion para error
+                // Animación de vibración (shake)
                 document.querySelector('button').animate([
                     { transform: 'translateX(0)' },
                     { transform: 'translateX(-10px)' },
@@ -266,6 +312,8 @@
         function nextStep(current, next) {
             document.getElementById(current).classList.remove('active');
             document.getElementById(next).classList.add('active');
+            // Hacer scroll hacia arriba al cambiar de paso
+            window.scrollTo(0,0);
         }
 
         function goToTimeline() {
@@ -277,17 +325,14 @@
             document.querySelector('.paper').style.display = 'block';
         }
 
-        // --- LOGICA DEL BOTON "NO" IMPOSIBLE ---
+        // --- LÓGICA DEL BOTÓN "NO" IMPOSIBLE ---
         function moveButton() {
             const btnNo = document.getElementById('btnNo');
-            const container = document.querySelector('.paper'); // Limite del movimiento
+            const container = document.querySelector('.paper');
             
-            // Obtener dimensiones
             const containerRect = container.getBoundingClientRect();
             const btnRect = btnNo.getBoundingClientRect();
 
-            // Calcular nueva posicion random dentro del contenedor
-            // Restamos el tamaño del boton para que no se salga
             const maxLeft = containerRect.width - btnRect.width;
             const maxTop = containerRect.height - btnRect.height;
 
@@ -299,7 +344,7 @@
             btnNo.style.top = newTop + 'px';
         }
 
-        // --- LOGICA DEL "SI" (CONFETI) ---
+        // --- LÓGICA DEL "SÍ" (CONFETI) ---
         function sheSaidYes() {
             nextStep('step4', 'step5');
             launchConfetti();
